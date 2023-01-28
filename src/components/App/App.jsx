@@ -87,21 +87,28 @@ class App extends Component {
   };
 
   render() {
+    const {
+      images,
+      isLoading,
+      showButton,
+      showModal,
+      currentLargeImg,
+      currentTagImg,
+    } = this.state;
+
     return (
       <div className={css.App}>
         <ToastContainer autoClose={3000} theme="colored" />
         <Searchbar onSubmit={this.handleSearchSubmit} />
-        {this.state.images && (
-          <ImageGallery images={this.state.images} openModal={this.openModal} />
-        )}
-        {this.state.isLoading && <Loader />}
-        {this.state.showButton && (
+        {images && <ImageGallery images={images} openModal={this.openModal} />}
+        {isLoading && <Loader />}
+        {showButton && (
           <Button type="button" text="Load more" onClick={this.loadMore} />
         )}
-        {this.state.showModal && (
+        {showModal && (
           <Modal
-            largeImg={this.state.currentLargeImg}
-            tags={this.state.currentTagImg}
+            largeImg={currentLargeImg}
+            tags={currentTagImg}
             onClick={this.toggleModal}
           />
         )}
