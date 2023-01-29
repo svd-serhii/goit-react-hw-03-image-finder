@@ -74,7 +74,9 @@ class App extends Component {
   }
 
   handleSearchSubmit = request => {
-    this.setState({ request });
+    if (request !== this.state.request) {
+      this.setState({ request, page: 1, images: [] });
+    }
   };
 
   openModal = event => {

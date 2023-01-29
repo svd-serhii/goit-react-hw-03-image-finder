@@ -6,11 +6,12 @@ function ImageGalleryItem({ image, openModal }) {
   return (
     <li className={css.ImageGalleryItem}>
       <img
+        loading="lazy"
         className={css.ImageGalleryItemImage}
         src={webformatURL}
         data-img={largeImageURL}
         alt={tags}
-        onClick={openModal}
+        onClick={e => openModal(e)}
       />
     </li>
   );
