@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import css from './ImageGalleryItem.module.css';
 
-function ImageGalleryItem({ src, tags, largeImg, openModal }) {
+function ImageGalleryItem({ image, openModal }) {
+  const { webformatURL, largeImageURL, tags } = image;
   return (
     <li className={css.ImageGalleryItem}>
       <img
         className={css.ImageGalleryItemImage}
-        src={src}
-        data-img={largeImg}
+        src={webformatURL}
+        data-img={largeImageURL}
         alt={tags}
         onClick={openModal}
       />
@@ -16,8 +17,7 @@ function ImageGalleryItem({ src, tags, largeImg, openModal }) {
 }
 
 ImageGalleryItem.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  images: PropTypes.array,
 };
 
 export default ImageGalleryItem;
