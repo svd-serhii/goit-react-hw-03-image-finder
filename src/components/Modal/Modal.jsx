@@ -29,7 +29,7 @@ class Modal extends Component {
     return createPortal(
       <div className={css.Overlay} onClick={this.handleBackDropClick}>
         <div className={css.Modal}>
-          <img src={this.props.large} alt={this.props.tags} loading="lazy" />
+          <img src={this.props.largeImg} alt={this.props.tags} loading="lazy" />
         </div>
       </div>,
       modalRoot

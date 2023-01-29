@@ -29,6 +29,16 @@ class App extends Component {
     const prevPage = prevState.page;
     const newPage = this.state.page;
 
+    if (this.state.images.length > 12) {
+      const { height: cardHeight } = document
+        .querySelector('li')
+        .firstElementChild.getBoundingClientRect();
+      window.scrollBy({
+        top: cardHeight * 3,
+        behavior: 'smooth',
+      });
+    }
+
     if (prevPage !== newPage || prevQuery !== newQuery) {
       window.scrollTo({
         top: 0,
@@ -49,8 +59,9 @@ class App extends Component {
               new Error(`There is no image with name ${newQuery}`)
             );
           }
-          if (response.length <= 10) {
+          if (response.length <= 11) {
             this.setState({ showButton: false });
+            toast.warn(`Sorry, but you've reached the end of search results.`);
           } else {
             this.setState({ showButton: true });
           }
@@ -109,7 +120,7 @@ class App extends Component {
           <Modal
             largeImg={currentLargeImg}
             tags={currentTagImg}
-            onClick={this.toggleModal}
+            onClose={this.toggleModal}
           />
         )}
       </div>

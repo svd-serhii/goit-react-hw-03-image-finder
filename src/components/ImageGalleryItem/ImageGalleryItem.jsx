@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import css from './ImageGalleryItem.module.css';
 
-function ImageGalleryItem({ src, tags, large, openModal }) {
+function ImageGalleryItem({ src, tags, largeImg, openModal }) {
   return (
     <li className={css.ImageGalleryItem}>
       <img
         className={css.ImageGalleryItemImage}
         src={src}
-        data-img={large}
+        data-img={largeImg}
         alt={tags}
         onClick={openModal}
       />
